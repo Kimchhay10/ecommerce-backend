@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const port = process.env.PORT || 3333
+const port = 3333
 require("dotenv/config");
 
 const postsRoute = require("./routes/posts");
@@ -26,4 +26,4 @@ mongoose
   .then(() => console.log("Connected to DB"))
   .catch((e) => console.log(e));
 
-app.listen(port, () => console.log(`the port is ${port}`));
+app.listen(process.env.PORT || port, () => console.log(`the port is ${port}`));

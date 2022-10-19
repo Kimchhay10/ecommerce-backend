@@ -27,7 +27,7 @@ router.get("/:postId", async (req, res) => {
 //insert data
 router.post("/", async (req, res) => {
   const post = new Post({
-    profileUrl: req.params.profileUrl,
+    profileUrl: req.body.profileUrl,
     profileName: req.body.profileName,
     title: req.body.title,
     price: req.body.price,
