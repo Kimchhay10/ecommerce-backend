@@ -27,11 +27,12 @@ router.get("/:postId", async (req, res) => {
 //insert data
 router.post("/", async (req, res) => {
   const post = new Post({
+    slugId: req.body.title.replace(/\s+/g, ""),
     profileUrl: req.body.profileUrl,
     profileName: req.body.profileName,
     title: req.body.title,
     price: req.body.price,
-    imageUrl: req.body.imageUrl
+    imageUrl: req.body.imageUrl,
   });
   try {
     const savePost = await post.save();

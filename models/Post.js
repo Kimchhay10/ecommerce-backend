@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const PostSchema = mongoose.Schema({
+  slugId: {
+    type: String,
+    required: true
+  },
   profileUrl: {
     type: String,
     required: true,
