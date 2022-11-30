@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
 });
 
 //get data by unigue id
-router.get("/:postId", async (req, res) => {
+router.get("/:slugId", async (req, res) => {
   try {
     const post = await Post.findById(req.params.slugId);
     res.json(post);
