@@ -1,8 +1,22 @@
 const express = require("express");
 //we can call it as Collection
 const Post = require("../models/Post");
-
+const path = require("path")
 const router = express.Router();
+
+const multer = require("multer")
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'Images')
+  },
+  filename: (req, file, cb) => {
+    console.log(file)
+    cb(null, Date.now() + path.extname(file.originalname))
+  }
+})
+const upload = multer({storage: storage})
+
+
 
 //get general data
 router.get("/", async (req, res) => {
@@ -25,7 +39,7 @@ router.get("/:postId", async (req, res) => {
 });
 
 //insert data
-router.post("/", async (req, res) => {
+router.post("/", upload.single('image'), async (req, res) => {
   const post = new Post({
     slugId: req.body.title.replace(/\s+/g, ""),
     profileUrl: req.body.profileUrl,
