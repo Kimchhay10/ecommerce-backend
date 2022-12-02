@@ -32,6 +32,7 @@ router.get("/", async (req, res) => {
 router.get("/:slugId", async (req, res) => {
   try {
     const post = await Post.findById(req.params.slugId);
+    console.log(req.params.price)
     res.json(post);
   } catch (err) {
     res.json({ message: err });
@@ -39,7 +40,7 @@ router.get("/:slugId", async (req, res) => {
 });
 
 //insert data
-router.post("/", upload.single('image'), async (req, res) => {
+router.post("/", async (req, res) => {
   const post = new Post({
     slugId: req.body.title.replace(/\s+/g, ""),
     profileUrl: req.body.profileUrl,
@@ -57,9 +58,9 @@ router.post("/", upload.single('image'), async (req, res) => {
 });
 
 //delete data
-router.delete("/:postId", async (req, res) => {
+router.delete("/:slugId", async (req, res) => {
   try {
-    const removePost = await Post.remove({ _id: req.params.postId });
+    const removePost = await Post.remove({ _id: req.params.slugId });
     res.json(removePost);
   } catch (err) {
     message: err;
@@ -67,10 +68,10 @@ router.delete("/:postId", async (req, res) => {
 });
 
 //update data
-router.patch("/:postId", async (req, res) => {
+router.patch("/:slugId", async (req, res) => {
   try {
     const updatedPost = await Post.updateOne(
-      { _id: req.params.postId },
+      { _id: req.params.slugId },
       { $set: { title: req.body.title, description: req.body.description } }
     );
     res.json(updatedPost);
