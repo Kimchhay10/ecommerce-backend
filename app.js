@@ -9,9 +9,11 @@ const categoryRoute = require("./routes/categorys");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-app.use(cors({
-  origin: '*',
-})); 
+app.use(
+  cors({
+    origin: "https://unboxx.vercel.app",
+  })
+); 
 app.use(bodyParser.json());
 app.use("/posts", postsRoute);
 app.use("/categories", categoryRoute);
