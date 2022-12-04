@@ -3,8 +3,8 @@ const express = require("express");
 const Post = require("../models/Post");
 const path = require("path")
 const router = express.Router();
-
 const multer = require("multer")
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'Images')

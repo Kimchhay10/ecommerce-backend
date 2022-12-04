@@ -12,7 +12,10 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use("/posts", postsRoute);
 app.use("/categories", categoryRoute);
-
+const cors = require("cors");
+app.use(cors({
+  origin: '*'
+}))
 app.get("/", (req, res) => {
   res.send("We are on home!");
 });
