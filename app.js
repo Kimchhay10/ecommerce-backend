@@ -1,21 +1,23 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const port = 3333
+const port = 3333;
 require("dotenv/config");
 
 const postsRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categorys");
 const bodyParser = require("body-parser");
-
+const cors = require("cors");
 
 app.use(bodyParser.json());
 app.use("/posts", postsRoute);
 app.use("/categories", categoryRoute);
-const cors = require("cors");
-app.use(cors({
-  origin: '*'
-}))
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST"],
+  })
+);
 app.get("/", (req, res) => {
   res.send("We are on home!");
 });
