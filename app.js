@@ -12,12 +12,7 @@ const cors = require("cors");
 app.use(bodyParser.json());
 app.use("/posts", postsRoute);
 app.use("/categories", categoryRoute);
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST"],
-  })
-);
+app.use(cors());
 app.get("/", (req, res) => {
   res.send("We are on home!");
 });
