@@ -13,11 +13,8 @@ app.use(bodyParser.json());
 app.use("/posts", postsRoute);
 app.use("/categories", categoryRoute);
 
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+app.use(cors());
+app.options("*", cors());
 
 app.get("/", (req, res) => {
   res.send("We are on home!");
