@@ -3,6 +3,7 @@ const express = require("express");
 const Post = require("../models/Post");
 // const path = require("path")
 const router = express.Router();
+const cors = require("cors");
 // const multer = require("multer")
 
 // const storage = multer.diskStorage({
@@ -17,7 +18,7 @@ const router = express.Router();
 // const upload = multer({storage: storage})
 
 //get general data
-router.get("/", async (req, res) => {
+router.get("/", cors(), async (req, res) => {
   try {
     const posts = await Post.find();
     res.json(posts);
