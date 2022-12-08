@@ -3,6 +3,7 @@ const express = require("express");
 const Category = require("../models/Category");
 const router = express.Router();
 const cors = require("cors");
+router.use(cors());
 
 router.get("/", cors(), async (req, res) => {
   try {

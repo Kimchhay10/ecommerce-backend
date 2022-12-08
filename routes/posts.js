@@ -18,7 +18,8 @@ const cors = require("cors");
 // const upload = multer({storage: storage})
 
 //get general data
-router.get("/", cors(), async (req, res) => {
+router.use(cors())
+router.get("/", async (req, res) => {
   try {
     const posts = await Post.find();
     res.json(posts);
