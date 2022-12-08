@@ -13,12 +13,7 @@ app.use(bodyParser.json());
 app.use("/posts", postsRoute);
 app.use("/categories", categoryRoute);
 
-app.use(cors({ credentials: true, origin: true, exposedHeaders: "*" }));
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Header", "Origin, X-Requested-With, Content-Type, Accept");
-})
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("We are on home!");

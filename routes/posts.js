@@ -16,8 +16,6 @@ const router = express.Router();
 // })
 // const upload = multer({storage: storage})
 
-
-
 //get general data
 router.get("/", async (req, res) => {
   try {
@@ -32,7 +30,7 @@ router.get("/", async (req, res) => {
 router.get("/:slugId", async (req, res) => {
   try {
     const post = await Post.findById(req.params.slugId);
-    console.log(req.params.price)
+    console.log(req.params.price);
     res.json(post);
   } catch (err) {
     res.json({ message: err });
