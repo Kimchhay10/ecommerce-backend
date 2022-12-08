@@ -12,7 +12,7 @@ router.get("/", cors(), async (req, res) => {
     res.json(err);
   }
 });
-router.post("/", async (req, res) => {
+router.post("/new", async (req, res) => {
     const categories = new Category({
         categoryName: req.body.categoryName,
         categoryImage: req.body.categoryImage

@@ -39,7 +39,7 @@ router.get("/:slugId", async (req, res) => {
 });
 
 //insert data
-router.post("/", async (req, res) => {
+router.post("/new", async (req, res) => {
   const post = new Post({
     slugId: req.body.title.replace(/\s+/g, ""),
     profileUrl: req.body.profileUrl,
