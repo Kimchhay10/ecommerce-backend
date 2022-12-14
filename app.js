@@ -6,14 +6,17 @@ require("dotenv/config");
 
 const postsRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categorys");
+const loginRoute = require("./routes/login");
+
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
 app.use(bodyParser.json());
 app.use("/posts", postsRoute);
 app.use("/categories", categoryRoute);
+app.use("/login", loginRoute);
 
-app.use(cors())
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("We are on home!");
