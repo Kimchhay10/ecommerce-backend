@@ -19,7 +19,7 @@ const cors = require("cors");
 
 //get general data
 router.use(cors())
-router.get("/", async (req, res) => {
+router.get("/", cors(), async (req, res) => {
   try {
     const posts = await Post.find();
     res.json(posts);
@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
 });
 
 //get data by unigue id
-router.get("/:slugId", async (req, res) => {
+router.get("/:slugId", cors(), async (req, res) => {
   try {
     const post = await Post.findById(req.params.slugId);
     console.log(req.params.price);
@@ -40,7 +40,7 @@ router.get("/:slugId", async (req, res) => {
 });
 
 //insert data
-router.post("/new", async (req, res) => {
+router.post("/new", cors(), async (req, res) => {
   const post = new Post({
     slugId: req.body.title.replace(/\s+/g, ""),
     profileUrl: req.body.profileUrl,
@@ -58,7 +58,7 @@ router.post("/new", async (req, res) => {
 });
 
 //delete data
-router.delete("/:slugId", async (req, res) => {
+router.delete("/:slugId", cors(), async (req, res) => {
   try {
     const removePost = await Post.remove({ _id: req.params.slugId });
     res.json(removePost);
@@ -68,7 +68,7 @@ router.delete("/:slugId", async (req, res) => {
 });
 
 //update data
-router.patch("/:slugId", async (req, res) => {
+router.patch("/:slugId", cors(), async (req, res) => {
   try {
     const updatedPost = await Post.updateOne(
       { _id: req.params.slugId },

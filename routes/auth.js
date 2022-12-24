@@ -7,7 +7,7 @@ router.use(cors());
 const LoginModel = require("../models/Login");
 const SignUpModel = require("../models/SignUp");
 
-router.get("/getuser", async (req, res) => {
+router.get("/getuser", cors(), async (req, res) => {
   try {
     const login = await LoginModel.find();
     res.json(login);
@@ -15,20 +15,20 @@ router.get("/getuser", async (req, res) => {
     res.json({ msg: "get user failed!" });
   }
 });
-router.post("/login", async (req, res) => {
+router.post("/login", cors(), async (req, res) => {
   try {
     const loginData = await LoginModel.find();
     if (
       loginData.email === req.body.email &&
       loginData.password === req.body.password
     ) {
-      res.json({msg: "Logged in successfully"})
+      res.json({ msg: "Logged in successfully" });
     }
   } catch (err) {
     res.json({ msg: "Login failed...!" });
   }
 });
-router.post("/signup", async (req, res) => {
+router.post("/signup", cors(), async (req, res) => {
   const signUp = new SignUpModel({
     email: req.body.email,
     password: req.body.password,

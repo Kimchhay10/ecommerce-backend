@@ -5,7 +5,7 @@ const Category = require("../models/Category");
 const cors = require("cors");
 router.use(cors());
 
-router.get("/", async (req, res) => {
+router.get("/", cors(), async (req, res) => {
   try {
     const categories = await Category.find();
     res.json(categories);
@@ -13,11 +13,11 @@ router.get("/", async (req, res) => {
     res.json(err);
   }
 });
-router.post("/new", async (req, res) => {
-    const categories = new Category({
-        categoryName: req.body.categoryName,
-        categoryImage: req.body.categoryImage
-    });
+router.post("/new", cors(), async (req, res) => {
+  const categories = new Category({
+    categoryName: req.body.categoryName,
+    categoryImage: req.body.categoryImage,
+  });
   try {
     const saveCategories = await categories.save();
     res.json(saveCategories);
