@@ -5,7 +5,7 @@ const Category = require("../models/Category");
 const cors = require("cors");
 router.use(cors());
 
-router.get("/", cors(), async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const categories = await Category.find();
     res.json(categories);

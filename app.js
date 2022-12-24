@@ -6,7 +6,7 @@ require("dotenv/config");
 
 const postsRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categorys");
-const loginRoute = require("./routes/login");
+const authRoute = require("./routes/auth");
 
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -14,7 +14,7 @@ const cors = require("cors");
 app.use(bodyParser.json());
 app.use("/posts", postsRoute);
 app.use("/categories", categoryRoute);
-app.use("/login", loginRoute);
+app.use("/auth", authRoute);
 
 app.use(cors());
 
